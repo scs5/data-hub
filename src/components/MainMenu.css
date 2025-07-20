@@ -1,0 +1,20 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.main-menu-link {
+  color: #F3F4F6;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 400;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.3rem;
+  transition: color 0.2s;
+}
+
+.main-menu-link:hover {
+  color: #8ab4f8;
+} 
