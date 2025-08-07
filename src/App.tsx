@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter  as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Music from './pages/Music';
 import Fitness from './pages/Fitness';
 import Health from './pages/Health';
