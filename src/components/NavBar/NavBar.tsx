@@ -134,10 +134,10 @@ const NavBar: React.FC<NavBarProps> = ({
     <header className={`header ${className}`}>
       <nav className="nav container" ref={navRef}>
         <div className="nav-data">
-          <a href="/" className="nav-logo">
+          <NavLink to="/" className="nav-logo">
             {logo.icon && <i className={logo.icon}></i>}
             {logo.text}
-          </a>
+          </NavLink>
           
           <div 
             className={`nav-toggle ${isMenuOpen ? 'show-icon' : ''}`}
