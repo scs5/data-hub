@@ -38,6 +38,7 @@ const NavBar: React.FC<NavBarProps> = ({
         isMenuOpen
       ) {
         setIsMenuOpen(false);
+        setOpenDropdowns(new Set());
       }
     };
 
@@ -46,7 +47,12 @@ const NavBar: React.FC<NavBarProps> = ({
   }, [isMenuOpen]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(prev => {
+      if (prev) {
+        setOpenDropdowns(new Set());
+      }
+      return !prev;
+    });
   };
 
   const toggleDropdown = (itemId: string) => {
@@ -97,7 +103,10 @@ const NavBar: React.FC<NavBarProps> = ({
             className={({ isActive }) =>
               isActive ? 'nav-link active' : 'nav-link'
             }
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              setOpenDropdowns(new Set());
+            }}
           >
             {item.icon && <i className={item.icon}></i>}
             {item.label}
@@ -110,7 +119,10 @@ const NavBar: React.FC<NavBarProps> = ({
       <NavLink
         to={item.href || '#'}
         className="dropdown-link"
-        onClick={() => setIsMenuOpen(false)}
+        onClick={() => {
+          setIsMenuOpen(false);
+          setOpenDropdowns(new Set());
+        }}
       >
         {item.icon && <i className={item.icon}></i>}
         {item.label}
