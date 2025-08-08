@@ -1,11 +1,12 @@
 .app-container {
   min-height: 100vh;
   width: 100vw;
-  background: #65607a;
+  background: #4d3b55;
   color: #F3F4F6;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .main-content {
