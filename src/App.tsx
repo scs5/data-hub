@@ -14,11 +14,11 @@ const menuItems = [
     id: 'analytics', 
     label: 'Analytics', 
     children: [
-      { id: 'music', label: 'Music', href: '/music' },
-      { id: 'fitness', label: 'Fitness', href: '/fitness' },
-      { id: 'health', label: 'Health', href: '/health' },
-      { id: 'games', label: 'Games', href: '/games' },
-      { id: 'anime', label: 'Anime', href: '/anime' },
+      { id: 'music', label: 'Music', href: '/music', icon: 'ri-music-2-fill' },
+      { id: 'fitness', label: 'Fitness', href: '/fitness', icon: 'ri-run-line' },
+      { id: 'health', label: 'Health', href: '/health', icon: 'ri-heart-pulse-fill' },
+      { id: 'games', label: 'Games', href: '/games', icon: 'ri-gamepad-fill' },
+      { id: 'anime', label: 'Anime', href: '/anime', icon: 'ri-tv-fill' },
     ] 
   },
 ];

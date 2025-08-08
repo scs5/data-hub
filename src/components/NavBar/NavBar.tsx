@@ -20,7 +20,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({
-  logo = { icon: 'ri-planet-line', text: 'DataHub' },
+  logo = { icon: 'ri-database-2-fill', text: 'DataHub' },
   menuItems,
   className = ''
 }) => {
