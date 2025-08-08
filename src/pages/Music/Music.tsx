@@ -51,9 +51,6 @@ const Music: React.FC = () => {
       ) : (
         <p>Loading artists...</p>
       )}
-      <Link to="/" style={{ color: '#8ab4f8', marginTop: '2rem', display: 'inline-block' }}>
-        Back to Menu
-      </Link>
     </div>
   );
 };

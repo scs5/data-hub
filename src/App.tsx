@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Music from './pages/Music';
-import Fitness from './pages/Fitness';
-import Health from './pages/Health';
-import Games from './pages/Games';
-import Anime from './pages/Anime';
+import Music from './pages/Music/Music';
+import Fitness from './pages/Fitness/Fitness';
+import Health from './pages/Health/Health';
+import Games from './pages/Games/Games';
+import Anime from './pages/Anime/Anime';
 import NavBar from './components/NavBar/NavBar';
 import './App.css';
 
