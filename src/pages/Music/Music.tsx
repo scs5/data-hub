@@ -51,11 +51,6 @@ const Music: React.FC = () => {
         const artistsData: ArtistsApiResponse = await artistsResponse.json();
         const tracksData: TracksApiResponse = await tracksResponse.json();
 
-        console.log('Artists data:', artistsData);
-        console.log('Tracks data:', tracksData);
-        console.log('Number of artists:', artistsData.items.length);
-        console.log('Number of tracks:', tracksData.items.length);
-
         setArtists(artistsData.items);
         setTracks(tracksData.items);
       } catch (err) {
@@ -67,11 +62,6 @@ const Music: React.FC = () => {
 
     fetchData();
   }, []);
-
-  // Debug useEffect to log state changes
-  useEffect(() => {
-    console.log('State updated - tracks:', tracks.length, 'artists:', artists.length);
-  }, [tracks, artists]);
 
   if (loading) {
     return (

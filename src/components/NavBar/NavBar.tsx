@@ -30,7 +30,6 @@ const NavBar: React.FC<NavBarProps> = ({
 
   // Close menu on outside click (mobile only)
   useEffect(() => {
-    console.log('Closing menu on outside click');
     const handleClickOutside = (event: MouseEvent) => {
       if (
         navRef.current &&
