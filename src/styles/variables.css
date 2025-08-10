@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Global CSS Custom Properties (Design System Variables)
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     Color Palette
+     ========================================================================== */
+  
+  /* Gray Scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Base Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-background: #49434c;
+  
+  /* Brand Colors */
+  --color-spotify: #1db954;
+  --color-spotify-hover: #1ed760;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Background images */
+  --background-default: repeating-linear-gradient(0deg, transparent 0px, transparent 25px,hsla(332,66%,49%,0.1) 25px, hsla(332,66%,49%,0.1) 27px,transparent 27px, transparent 51px),repeating-linear-gradient(90deg, transparent 0px, transparent 25px,hsla(332,66%,49%,0.1) 25px, hsla(332,66%,49%,0.1) 27px,transparent 27px, transparent 51px),repeating-linear-gradient(90deg, transparent 0px, transparent 50px,hsla(193,5%,69%,0.1) 50px, hsla(193,5%,69%,0.1) 52px,transparent 52px, transparent 102px),repeating-linear-gradient(0deg, transparent 0px, transparent 50px,hsla(193,5%,69%,0.1) 50px, hsla(193,5%,69%,0.1) 52px,transparent 52px, transparent 102px),repeating-linear-gradient(0deg, hsla(26,76%,62%,0.1) 0px, hsla(26,76%,62%,0.1) 2px,transparent 2px, transparent 102px),repeating-linear-gradient(90deg, hsla(26,76%,62%,0.1) 0px, hsla(26,76%,62%,0.1) 2px,transparent 2px, transparent 102px),linear-gradient(90deg, rgb(109, 18, 84),rgb(76, 43, 103));  overflow-x: hidden;
+  --background-music: linear-gradient(to right, #4ade80, #14b8a6, #0891b2);
+  --background-fitness: linear-gradient(to right, #f97316, #dc2626, #be185d);
+  --background-health: linear-gradient(to right, #10b981, #059669, #047857);
+  --background-games: linear-gradient(to right, #8b5cf6, #7c3aed, #6d28d9);
+  --background-anime: linear-gradient(to right, #ec4899, #be185d, #9d174d);
+  
+  
+  /* ==========================================================================
+     Spacing Scale
+     ========================================================================== */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 0.75rem;    /* 12px */
+  --spacing-base: 1rem;     /* 16px */
+  --spacing-lg: 1.25rem;    /* 20px */
+  --spacing-xl: 1.5rem;     /* 24px */
+  --spacing-2xl: 2rem;      /* 32px */
+  --spacing-3xl: 2.5rem;    /* 40px */
+  --spacing-4xl: 3rem;      /* 48px */
+  
+  /* ==========================================================================
+     Border Radius Scale
+     ========================================================================== */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+  
+  /* ==========================================================================
+     Shadow System
+     ========================================================================== */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* ==========================================================================
+     Transition System
+     ========================================================================== */
+  --transition-fast: all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  
+  /* ==========================================================================
+     Typography Scale
+     ========================================================================== */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  
+  /* ==========================================================================
+     Z-Index Scale
+     ========================================================================== */
+  --z-base: 0;      /* Default layer */
+  --z-above: 1;     /* Above base elements (badges, hover effects) */
+  --z-top: 10;      /* Top layer (modals, dropdowns, overlays) */
+  
+  /* ==========================================================================
+     Layout Constants
+     ========================================================================== */
+  --container-max-width: 1400px;
+  --container-padding: var(--spacing-base);
+  
+  /* ==========================================================================
+     Breakpoints (for reference in CSS)
+     ========================================================================== */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}

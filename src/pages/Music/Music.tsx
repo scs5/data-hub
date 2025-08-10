@@ -76,16 +76,13 @@ const Music: React.FC = () => {
   if (loading) {
     return (
       <div className="music-dashboard">
-        <h1>Music</h1>
-        <div className="loading">Loading your music data...</div>
+        <div className="loading">Loading music data...</div>
       </div>
     );
   }
 
   return (
     <div className="music-dashboard">
-      <h1>Your Music</h1>
-      
       {/* Row 1: Spotify Profile + Period Selector */}
       <div className="dashboard-row">
         <div className="dashboard-card">

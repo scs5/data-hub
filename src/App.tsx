@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Music from './pages/Music/Music';
 import Fitness from './pages/Fitness/Fitness';
 import Health from './pages/Health/Health';
@@ -23,21 +23,58 @@ const menuItems = [
   },
 ];
 
+// Component to handle route changes and update background
+function AppContent() {
+  const location = useLocation();
+  const [currentBackground, setCurrentBackground] = useState('var(--background-default)');
+
+  useEffect(() => {
+    const path = location.pathname;
+    let background = 'var(--background-default)'; // default background
+    
+    switch (path) {
+      case '/music':
+        background = 'var(--background-music)';
+        break;
+      case '/fitness':
+        background = 'var(--background-fitness)';
+        break;
+      case '/health':
+        background = 'var(--background-health)';
+        break;
+      case '/games':
+        background = 'var(--background-games)';
+        break;
+      case '/anime':
+        background = 'var(--background-anime)';
+        break;
+      default:
+        background = 'var(--background-default)';
+    }
+    
+    setCurrentBackground(background);
+  }, [location]);
+
+  return (
+    <div className="app-container" style={{ background: currentBackground }}>
+      <NavBar menuItems={menuItems} />
+      <main className="main-content">
+        <Routes>
+          <Route path="/music" element={<Music />} />
+          <Route path="/fitness" element={<Fitness />} />
+          <Route path="/health" element={<Health />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/anime" element={<Anime />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router basename="/data-hub">
-      <div className="app-container">
-        <NavBar menuItems={menuItems} />
-        <main className="main-content">
-          <Routes>
-            <Route path="/music" element={<Music />} />
-            <Route path="/fitness" element={<Fitness />} />
-            <Route path="/health" element={<Health />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/anime" element={<Anime />} />
-          </Routes>
-        </main>
-      </div>
+      <AppContent />
     </Router>
   );
 }
