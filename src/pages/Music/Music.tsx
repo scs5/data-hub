@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import MusicLoader from '../../components/MusicLoader/MusicLoader';
 import './Music.css';
 
 interface Artist {
@@ -64,11 +65,7 @@ const Music: React.FC = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="music-dashboard">
-        <div className="loading">Loading music data...</div>
-      </div>
-    );
+    return <MusicLoader />;
   }
 
   return (

@@ -37,13 +37,6 @@
   letter-spacing: -0.02em;
 }
 
-.loading {
-  text-align: center;
-  font-size: var(--font-size-lg);
-  color: var(--color-gray-400);
-  margin-top: var(--spacing-2xl);
-}
-
 /* ==========================================================================
    Dashboard Layout
    ========================================================================== */
