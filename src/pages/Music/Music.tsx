@@ -104,7 +104,7 @@ const Music: React.FC = () => {
       <div className="dashboard-row">
         <div className="dashboard-card">
           <div className="card-header">
-            <h2>Top Tracks ({tracks.length})</h2>
+            <h2>Top Tracks</h2>
           </div>
           <div className="card-content">
             <div className="scrollable-table">
@@ -157,7 +157,7 @@ const Music: React.FC = () => {
         
         <div className="dashboard-card">
           <div className="card-header">
-            <h2>Top Artists ({artists.length})</h2>
+            <h2>Top Artists</h2>
           </div>
           <div className="card-content">
             <div className="scrollable-table">
