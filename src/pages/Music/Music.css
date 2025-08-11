@@ -185,14 +185,13 @@
   border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
-/* Desktop health indicators - larger icons */
+/* Desktop health indicators - inline layout */
 @media (min-width: 769px) {
   .health-status {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-sm);
     background: none;
     border: none;
@@ -201,36 +200,38 @@
   
   .health-status.healthy::before {
     content: '✓';
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: bold;
     color: var(--color-success);
     line-height: 1;
     background: none;
     border: 2px solid var(--color-success);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 0 0;
+    flex-shrink: 0;
   }
   
   .health-status.stale::before {
     content: '⚠';
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: bold;
     color: var(--color-warning);
     line-height: 1;
     background: none;
     border: 2px solid var(--color-warning);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 0 0;
+    flex-shrink: 0;
   }
   
   .health-status.healthy {
@@ -240,7 +241,7 @@
     color: var(--color-white);
     white-space: normal;
     word-wrap: break-word;
-    text-align: center;
+    text-align: left;
     min-width: 0;
     max-width: 100%;
   }
@@ -252,18 +253,18 @@
     color: var(--color-white);
     white-space: normal;
     word-wrap: break-word;
-    text-align: center;
+    text-align: left;
     min-width: 0;
     max-width: 100%;
   }
   
   .status-text {
-    padding: var(--spacing-sm) var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-sm);
     color: var(--color-white);
     white-space: normal;
     word-wrap: break-word;
-    text-align: center;
+    text-align: left;
     min-width: 0;
     max-width: 100%;
     line-height: 1.4;

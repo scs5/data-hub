@@ -119,7 +119,7 @@ const Music: React.FC = () => {
     if (!lastModified) return false;
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - lastModified.getTime()) / (1000 * 60));
-    return diffInMinutes < 1440; // Data is considered fresh if less than 24 hours old
+    return diffInMinutes < 24 * 60; // Data is considered fresh if less than 24 hours old
   };
 
   if (loading) {
