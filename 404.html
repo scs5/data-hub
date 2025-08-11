@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script>
+      // Redirect unknown paths to index.html
+      const redirectTo = window.location.origin + '/data-hub/index.html';
+      const search = window.location.search || '';
+      const hash = window.location.hash || '';
+      const path = window.location.pathname.replace('/data-hub', '');
+      sessionStorage.redirect = path + search + hash;
+      window.location.replace(redirectTo);
+    </script>
+  </head>
+  <body></body>
+</html>
