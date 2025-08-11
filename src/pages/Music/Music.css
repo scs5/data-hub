@@ -47,6 +47,11 @@
   margin-bottom: var(--spacing-2xl);
 }
 
+.dashboard-row-top {
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: var(--spacing-xl);
+}
+
 .dashboard-card {
   background: var(--color-gray-800);
   border-radius: var(--radius-xl);
@@ -82,6 +87,12 @@
   min-height: var(--card-min-height);
 }
 
+/* Top row cards should be shorter */
+.dashboard-row-top .dashboard-card .card-content {
+  min-height: 140px;
+  padding: var(--spacing-base);
+}
+
 /* ==========================================================================
    Placeholder Content
    ========================================================================== */
@@ -106,6 +117,138 @@
   font-size: var(--font-size-sm);
   opacity: 0.7;
   font-weight: 400;
+}
+
+/* ==========================================================================
+   Profile Section
+   ========================================================================== */
+.profile-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  height: 100%;
+  padding: var(--spacing-sm);
+  gap: var(--spacing-md);
+  justify-content: space-between;
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.profile-image {
+  flex-shrink: 1;
+  min-width: 48px;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-gray-600);
+  transition: var(--transition-fast);
+}
+
+.profile-image img:hover {
+  border-color: var(--color-spotify);
+}
+
+.profile-image-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.profile-image-link:hover img {
+  border-color: var(--color-spotify);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.2;
+  white-space: normal;
+  overflow: visible;
+  max-width: 100%;
+  width: 100%;
+}
+
+.profile-followers {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  font-weight: 500;
+  white-space: normal;
+  overflow: visible;
+  max-width: 100%;
+}
+
+.profile-region {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-400);
+  font-weight: 400;
+  white-space: normal;
+  overflow: visible;
+  max-width: 100%;
+}
+
+.profile-spotify-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-spotify);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: rgba(29, 185, 84, 0.1);
+  border: 1px solid rgba(29, 185, 84, 0.2);
+  transition: var(--transition-fast);
+  margin-top: var(--spacing-xs);
+  max-width: 100%;
+  overflow: visible;
+}
+
+.profile-spotify-link:hover {
+  color: var(--color-spotify-hover);
+  background: rgba(29, 185, 84, 0.15);
+  border-color: rgba(29, 185, 84, 0.3);
+  transform: translateY(-1px);
+}
+
+.profile-spotify-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.profile-spotify-link span {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* Desktop-only class for responsive hiding */
+.desktop-only {
+  display: flex;
 }
 
 /* ==========================================================================
@@ -363,10 +506,36 @@
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
+@media (max-width: 1280px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .profile-name {
+    text-align: center;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    text-align: center;
+  }
+  
+  .profile-spotify-link {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 1024px) {
   .dashboard-row {
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
+  }
+  
+  .dashboard-row-top {
+    gap: var(--spacing-lg);
   }
   
   .card-content {
@@ -376,6 +545,34 @@
   
   .scrollable-table {
     max-height: var(--table-max-height);
+  }
+  
+  .profile-section {
+    padding: var(--spacing-xs);
+    gap: var(--spacing-sm);
+  }
+  
+  .profile-image img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-image img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 800px) {
+  .profile-image img {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -395,6 +592,17 @@
     margin-bottom: var(--spacing-xl);
   }
   
+  .dashboard-row-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  /* Move period selection to second row on medium screens */
+  .dashboard-row-top .dashboard-card:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  
   .card-header {
     padding: var(--spacing-base);
   }
@@ -406,6 +614,10 @@
   .card-content {
     padding: var(--spacing-base);
     min-height: 160px;
+  }
+  
+  .dashboard-row-top .dashboard-card .card-content {
+    min-height: 120px;
   }
   
   .placeholder-icon {
@@ -452,6 +664,48 @@
   .item-followers {
     font-size: var(--font-size-xs);
   }
+  
+  .profile-section {
+    padding: var(--spacing-xs);
+    gap: var(--spacing-sm);
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    justify-content: space-evenly;
+  }
+
+  .profile-info {
+    flex: 0 1 auto;
+  }
+  
+  .profile-image img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-base);
+    text-align: left;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    font-size: var(--font-size-xs);
+    text-align: left;
+  }
+  
+  .profile-spotify-link {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-image img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -465,6 +719,17 @@
     margin-bottom: var(--spacing-base);
   }
   
+  .dashboard-row-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  /* Keep the same layout as 768px - profile and data in first row, period below */
+  .dashboard-row-top .dashboard-card:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  
   .card-header {
     padding: 0.875rem;
   }
@@ -476,6 +741,14 @@
   .card-content {
     padding: 0.875rem;
     min-height: 140px;
+  }
+  
+  .dashboard-row-top .dashboard-card .card-content {
+    min-height: 100px;
+    padding: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .placeholder-icon {
@@ -518,6 +791,69 @@
     width: 14px;
     height: 14px;
   }
+  
+  .profile-section {
+    gap: var(--spacing-xs);
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    height: 100%;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .profile-image img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .profile-image img:hover {
+    border-color: var(--color-spotify);
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-sm);
+    text-align: left;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+  
+  .profile-spotify-link {
+    padding: 2px var(--spacing-xs);
+    font-size: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Only stack vertically when image reaches minimum size */
+  .profile-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-name {
+    text-align: center;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    text-align: center;
+  }
+  
+  .profile-spotify-link {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 360px) {
@@ -528,6 +864,17 @@
   .dashboard-row {
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
+  }
+  
+  .dashboard-row-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  /* Keep the same layout - profile and data in first row, period below */
+  .dashboard-row-top .dashboard-card:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
   
   .card-header {
@@ -541,6 +888,11 @@
   .card-content {
     padding: var(--spacing-md);
     min-height: 120px;
+  }
+  
+  .dashboard-row-top .dashboard-card .card-content {
+    min-height: 90px;
+    padding: var(--spacing-sm);
   }
   
   .placeholder-icon {
@@ -571,5 +923,78 @@
     top: 4px;
     left: 4px;
     padding: 1px 3px;
+  }
+  
+  .profile-section {
+    padding: var(--spacing-xs);
+    gap: var(--spacing-xs);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-image img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  
+  .profile-spotify-link {
+    padding: 1px var(--spacing-xs);
+    font-size: 0.7rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .dashboard-row-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  /* Keep the same layout - profile and data in first row, period below */
+  .dashboard-row-top .dashboard-card:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  
+  .profile-section {
+    padding: var(--spacing-xs);
+    gap: var(--spacing-xs);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-image img {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+  
+  .profile-followers,
+  .profile-region {
+    font-size: 0.65rem;
+    text-align: center;
+  }
+  
+  .profile-spotify-link {
+    padding: 1px var(--spacing-xs);
+    font-size: 0.65rem;
+    justify-content: center;
   }
 }
