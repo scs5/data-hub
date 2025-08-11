@@ -422,7 +422,7 @@
   
   .music-item {
     min-height: 60px;
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
   }
   
   .item-image {
@@ -491,7 +491,7 @@
   }
   
   .music-item {
-    padding: 0.625rem;
+    padding: var(--spacing-sm);
     min-height: 56px;
   }
   
