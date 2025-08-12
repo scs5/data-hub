@@ -52,6 +52,10 @@
   gap: var(--spacing-xl);
 }
 
+.dashboard-row-full {
+  grid-template-columns: 1fr;
+}
+
 .dashboard-card {
   background: var(--color-gray-800);
   border-radius: var(--radius-xl);
@@ -657,18 +661,16 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(29, 185, 84, 0.1);
 }
 
 .spotify-link:hover {
   color: var(--color-spotify-hover);
-  background: rgba(29, 185, 84, 0.15);
   transform: scale(1.05);
 }
 
 .spotify-link svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 /* ==========================================================================
@@ -763,6 +765,10 @@
   .dashboard-row-top {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
+  }
+  
+  .dashboard-row-full {
+    grid-template-columns: 1fr;
   }
   
   /* Move period selection to second row on medium screens */
@@ -955,6 +961,10 @@
     gap: var(--spacing-md);
   }
   
+  .dashboard-row-full {
+    grid-template-columns: 1fr;
+  }
+  
   .dashboard-row-top .dashboard-card:nth-child(2) {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -1018,8 +1028,8 @@
   }
   
   .spotify-link svg {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
   }
   
   .profile-section {
@@ -1150,6 +1160,10 @@
   .dashboard-row-top {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-sm);
+  }
+  
+  .dashboard-row-full {
+    grid-template-columns: 1fr;
   }
   
   /* Keep the same layout - profile and data in first row, period below */
@@ -1292,6 +1306,10 @@
   .dashboard-row-top {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-sm);
+  }
+  
+  .dashboard-row-full {
+    grid-template-columns: 1fr;
   }
   
   /* Keep the same layout - profile and data in first row, period below */

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MusicLoader from '../../components/MusicLoader/MusicLoader';
+import RecentlyPlayedTicker from '../../components/RecentlyPlayedTicker/RecentlyPlayedTicker';
 import './Music.css';
 
 interface Profile {
@@ -218,7 +219,12 @@ const Music: React.FC = () => {
         </div>
       </div>
 
-      {/* Row 2: Top Tracks + Top Artists */}
+      {/* Row 2: Recently Played Ticker */}
+      <div className="dashboard-row dashboard-row-full">
+        <RecentlyPlayedTicker />
+      </div>
+
+      {/* Row 3: Top Tracks + Top Artists */}
       <div className="dashboard-row">
         <div className="dashboard-card">
           <div className="card-header">

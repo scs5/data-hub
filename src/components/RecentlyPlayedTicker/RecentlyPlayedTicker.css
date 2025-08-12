@@ -1,0 +1,515 @@
+/* ==========================================================================
+   Import Global Design System Variables
+   ========================================================================== */
+@import url('../../styles/variables.css');
+
+/* ==========================================================================
+   Recently Played Ticker Component
+   ========================================================================== */
+:root {
+  /* Ticker Animation Speed */
+  --ticker-scroll-duration: 200s;
+}
+.recently-played-ticker {
+  background: var(--color-gray-800);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-700);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+.recently-played-ticker:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gray-600);
+}
+
+/* ==========================================================================
+   Ticker Header
+   ========================================================================== */
+.ticker-header {
+  background: var(--color-gray-900);
+  border-bottom: 1px solid var(--color-gray-700);
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticker-header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+
+
+/* ==========================================================================
+   Ticker Container
+   ========================================================================== */
+.ticker-container {
+  overflow: hidden;
+  position: relative;
+  background: var(--color-gray-800);
+}
+
+.ticker-track {
+  display: flex;
+  animation: ticker-scroll var(--ticker-scroll-duration) linear infinite;
+  width: max-content;
+}
+
+.ticker-content {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+/* ==========================================================================
+   Ticker Items
+   ========================================================================== */
+.ticker-item {
+  display: flex;
+  align-items: center;
+  background: var(--color-gray-900);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--spacing-md);
+  border: 1px solid var(--color-gray-700);
+  transition: var(--transition-fast);
+  width: 320px;
+  height: 80px;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ticker-item:hover {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   Track Image
+   ========================================================================== */
+.track-image {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  background: var(--color-gray-700);
+  border: 1px solid var(--color-gray-600);
+}
+
+.track-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-fast);
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+.ticker-item:hover .track-image img {
+  filter: grayscale(0.1) brightness(1);
+}
+
+/* ==========================================================================
+   Track Info
+   ========================================================================== */
+.track-info {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 120px); /* Account for image, time, and spotify link */
+  overflow: hidden;
+}
+
+.track-name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-xs) 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  max-width: 100%;
+}
+
+.track-artist {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  margin: 0 0 var(--spacing-xs) 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  max-width: 100%;
+}
+
+.track-album {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  font-style: italic;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Track Time
+   ========================================================================== */
+.track-time {
+  position: absolute;
+  top: calc(var(--spacing-md) + 2px);
+  right: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  font-weight: 400;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Spotify Link
+   ========================================================================== */
+.track-spotify-link {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 32px;
+  height: 32px;
+  color: var(--color-spotify);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.track-spotify-link:hover {
+  color: var(--color-spotify-hover);
+  transform: scale(1.05);
+}
+
+.track-spotify-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   Ticker Animation
+   ========================================================================== */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.ticker-container:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+.recently-played-ticker.loading .ticker-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  min-height: 120px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-spotify);
+  animation: loading-bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Error States
+   ========================================================================== */
+.recently-played-ticker.error .ticker-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  min-height: 120px;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.error-icon {
+  font-size: var(--font-size-lg);
+}
+
+/* ==========================================================================
+   Empty States
+   ========================================================================== */
+.recently-played-ticker.empty .ticker-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  min-height: 120px;
+}
+
+.empty-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.empty-icon {
+  font-size: var(--font-size-lg);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .ticker-item {
+    width: 300px;
+    height: 85px;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+  
+  .track-image {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .track-name {
+    font-size: var(--font-size-sm);
+  }
+  
+  .track-artist,
+  .track-album {
+    font-size: var(--font-size-xs);
+  }
+  
+  .track-spotify-link {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .track-spotify-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ticker-header {
+    padding: var(--spacing-base);
+    text-align: center;
+  }
+  
+  .ticker-header h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .ticker-content {
+    padding: var(--spacing-base);
+    gap: var(--spacing-base);
+  }
+  
+  .ticker-item {
+    width: 280px;
+    height: 80px;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+  
+  .track-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .track-name {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-artist {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-album {
+    font-size: var(--font-size-xs);
+  }
+  
+  .track-spotify-link {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .track-spotify-link svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+
+}
+
+@media (max-width: 480px) {
+  .ticker-header {
+    padding: var(--spacing-sm);
+  }
+  
+  .ticker-header h3 {
+    font-size: var(--font-size-base);
+  }
+  
+  .ticker-content {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+  
+  .ticker-item {
+    width: 240px;
+    height: 75px;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+  
+  .track-image {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .track-name {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-artist {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-album {
+    font-size: var(--font-size-xs);
+  }
+  
+  .track-spotify-link {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .track-spotify-link svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+
+  
+  .loading-dots span {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .error-message,
+  .empty-message {
+    font-size: var(--font-size-xs);
+  }
+  
+  .error-icon,
+  .empty-icon {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 360px) {
+  .ticker-item {
+    width: 220px;
+    height: 70px;
+    padding: var(--spacing-xs);
+    gap: var(--spacing-xs);
+  }
+  
+  .track-image {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .track-name {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-artist {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .track-album {
+    font-size: var(--font-size-xs);
+  }
+  
+  .track-spotify-link {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .track-spotify-link svg {
+    width: 12px;
+    height: 12px;
+  }
+  
+
+}
