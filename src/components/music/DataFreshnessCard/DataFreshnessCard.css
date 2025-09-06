@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Import Global Design System Variables
+   ========================================================================== */
+@import url('../../../styles/variables.css');
+
+/* ==========================================================================
+   Data Freshness Card
+   ========================================================================== */
+.data-freshness-card {
+  background: var(--color-gray-800);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-700);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.data-freshness-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gray-600);
+}
+
+.data-freshness-card .card-content {
+  padding: var(--spacing-base);
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Placeholder Content
+   ========================================================================== */
+.placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--color-gray-500);
+}
+
+.placeholder-icon {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.4;
+}
+
+.placeholder-content p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Data Freshness Section
+   ========================================================================== */
+.data-freshness-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  gap: var(--spacing-sm);
+}
+
+.last-fetched-info {
+  text-align: center;
+}
+
+.last-fetched-label {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-spotify);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.last-fetched-time {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.last-fetched-ago {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  font-weight: 500;
+}
+
+.health-indicator {
+  margin-top: var(--spacing-sm);
+}
+
+.health-status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.health-status.healthy {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--color-success);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.health-status.stale {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--color-warning);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+/* Desktop health indicators - inline layout */
+@media (min-width: 769px) {
+  .health-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    background: none;
+    border: none;
+    color: var(--color-white);
+  }
+  
+  .health-status.healthy::before {
+    content: '✓';
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--color-success);
+    line-height: 1;
+    background: none;
+    border: 2px solid var(--color-success);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0;
+    flex-shrink: 0;
+  }
+  
+  .health-status.stale::before {
+    content: '⚠';
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--color-warning);
+    line-height: 1;
+    background: none;
+    border: 2px solid var(--color-warning);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0;
+    flex-shrink: 0;
+  }
+  
+  .health-status.healthy {
+    background: none;
+    border: none;
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+    min-width: 0;
+    max-width: 100%;
+  }
+  
+  .health-status.stale {
+    background: none;
+    border: none;
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+    min-width: 0;
+    max-width: 100%;
+  }
+  
+  .status-text {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+    min-width: 0;
+    max-width: 100%;
+    line-height: 1.4;
+  }
+  
+  .health-status.healthy .status-text {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: var(--radius-md);
+  }
+  
+  .health-status.stale .status-text {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: var(--radius-md);
+  }
+  
+  .last-fetched-time {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+  .data-freshness-card .card-content {
+    padding: var(--spacing-base);
+    min-height: 120px;
+  }
+  
+  .data-freshness-section {
+    padding: var(--spacing-xs);
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .last-fetched-info {
+    margin-bottom: 0;
+  }
+  
+  .last-fetched-label {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-time {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-ago {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Mobile health indicator - inline layout */
+  .health-indicator {
+    margin-top: var(--spacing-xs);
+  }
+  
+  .health-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+  }
+  
+  .health-status.stale {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+  
+  .health-status::before {
+    content: '✓';
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+  }
+  
+  .health-status.stale::before {
+    content: '⚠';
+    color: var(--color-warning);
+  }
+  
+  .status-text {
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .data-freshness-card .card-content {
+    padding: var(--spacing-sm);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .data-freshness-section {
+    padding: var(--spacing-sm);
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .last-fetched-info {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .last-fetched-label {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-time {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-ago {
+    font-size: var(--font-size-xs);
+  }
+
+  .health-indicator {
+    margin-top: var(--spacing-xs);
+  }
+
+  .health-status {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-align: center;
+    transition: var(--transition-fast);
+  }
+
+  .health-status.healthy {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .health-status.stale {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--color-warning);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+}
+
+@media (max-width: 360px) {
+  .data-freshness-card .card-content {
+    padding: var(--spacing-sm);
+    min-height: 90px;
+  }
+  
+  .data-freshness-section {
+    padding: var(--spacing-xs);
+    justify-content: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .last-fetched-info {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .last-fetched-label {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-time {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-ago {
+    font-size: var(--font-size-xs);
+  }
+
+  .health-indicator {
+    margin-top: var(--spacing-xs);
+  }
+
+  .health-status {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-align: center;
+    transition: var(--transition-fast);
+  }
+
+  .health-status.healthy {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .health-status.stale {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--color-warning);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+}
+
+@media (max-width: 320px) {
+  .data-freshness-card .card-content {
+    padding: var(--spacing-sm);
+    min-height: 90px;
+  }
+  
+  .data-freshness-section {
+    padding: var(--spacing-xs);
+    justify-content: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .last-fetched-info {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .last-fetched-label {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-time {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .last-fetched-ago {
+    font-size: var(--font-size-xs);
+  }
+
+  .health-indicator {
+    margin-top: var(--spacing-xs);
+  }
+
+  .health-status {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-align: center;
+    transition: var(--transition-fast);
+  }
+
+  .health-status.healthy {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .health-status.stale {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--color-warning);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+}

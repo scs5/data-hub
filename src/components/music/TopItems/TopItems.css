@@ -1,0 +1,480 @@
+/* ==========================================================================
+   Import Global Design System Variables
+   ========================================================================== */
+@import url('../../../styles/variables.css');
+
+/* ==========================================================================
+   Top Items Component
+   ========================================================================== */
+.dashboard-card {
+  background: var(--color-gray-800);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-700);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gray-600);
+}
+
+.card-header {
+  background: var(--color-gray-900);
+  border-bottom: 1px solid var(--color-gray-700);
+  padding: var(--spacing-lg);
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.card-content {
+  padding: var(--spacing-lg);
+  min-height: var(--card-min-height);
+}
+
+/* ==========================================================================
+   Scrollable Table
+   ========================================================================== */
+.scrollable-table {
+  max-height: var(--table-max-height);
+  overflow-y: auto;
+  padding-right: var(--spacing-sm);
+}
+
+.scrollable-table::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+  background: var(--color-gray-700);
+  border-radius: var(--radius-sm);
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+  background: var(--color-gray-500);
+  border-radius: var(--radius-sm);
+}
+
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* ==========================================================================
+   Music Items
+   ========================================================================== */
+.music-item {
+  display: flex;
+  align-items: center;
+  background: var(--color-gray-900);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm);
+  transition: var(--transition-fast);
+  border: 1px solid var(--color-gray-700);
+  position: relative;
+  overflow: hidden;
+  min-height: var(--item-min-height);
+  min-width: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.music-item:last-child {
+  margin-bottom: 0;
+}
+
+.music-item:hover {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-600);
+}
+
+.item-rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-gray-700);
+  border-radius: var(--radius-md);
+  padding: 2px 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+  transition: var(--transition-fast);
+  z-index: var(--z-above);
+}
+
+.music-item:hover .item-rank {
+  background: var(--color-gray-600);
+}
+
+.item-image {
+  width: var(--item-image-size);
+  height: var(--item-image-size);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-right: var(--spacing-base);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  background: var(--color-gray-700);
+  border: 1px solid var(--color-gray-600);
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-fast);
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+.music-item:hover .item-image {
+  border-color: var(--color-gray-500);
+}
+
+.music-item:hover .item-image img {
+  filter: grayscale(0.1) brightness(1);
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.item-name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-white);
+  margin: 0 0 0.125rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-details {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  margin: 0 0 0.125rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-album {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  margin: 0 0 0.375rem 0;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-followers {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  margin: 0 0 0.375rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Popularity Bar
+   ========================================================================== */
+.popularity-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--color-gray-700);
+  border-radius: var(--radius-sm);
+  overflow: visible;
+  margin-top: 0.375rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.popularity-bar:hover .popularity-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.popularity-fill {
+  height: 100%;
+  background: var(--color-gray-700);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.popularity-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-error) 0%, var(--color-warning) 50%, var(--color-success) 100%);
+  border-radius: var(--radius-sm);
+  clip-path: inset(0 0 0 0);
+}
+
+.popularity-bar:hover .popularity-fill {
+  box-shadow: 0 0 4px rgba(156, 163, 175, 0.3);
+}
+
+.popularity-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: var(--z-tooltip);
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+  pointer-events: none;
+  border: 1px solid var(--color-gray-700);
+}
+
+.popularity-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--color-gray-900);
+}
+
+/* ==========================================================================
+   Spotify Link
+   ========================================================================== */
+.spotify-link {
+  width: 28px;
+  height: 28px;
+  color: var(--color-spotify);
+  margin-left: var(--spacing-md);
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.spotify-link:hover {
+  color: var(--color-spotify-hover);
+  transform: scale(1.05);
+}
+
+.spotify-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .card-content {
+    padding: var(--spacing-lg);
+    min-height: 180px;
+  }
+  
+  .scrollable-table {
+    max-height: var(--table-max-height);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-header {
+    padding: var(--spacing-base);
+  }
+  
+  .card-header h2 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .card-content {
+    padding: var(--spacing-base);
+    min-height: 160px;
+  }
+  
+  .scrollable-table {
+    max-height: var(--table-max-height);
+  }
+  
+  .music-item {
+    min-height: 60px;
+    padding: var(--spacing-sm);
+  }
+  
+  .item-image {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .item-rank {
+    font-size: var(--font-size-xs);
+    top: 6px;
+    left: 6px;
+    padding: 2px 5px;
+  }
+  
+  .item-name {
+    font-size: var(--font-size-sm);
+  }
+  
+  .item-details {
+    font-size: var(--font-size-xs);
+  }
+  
+  .item-album {
+    font-size: var(--font-size-xs);
+  }
+  
+  .item-followers {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-header {
+    padding: 0.875rem;
+  }
+  
+  .card-header h2 {
+    font-size: var(--font-size-base);
+  }
+  
+  .card-content {
+    padding: 0.875rem;
+    min-height: 140px;
+  }
+  
+  .scrollable-table {
+    max-height: var(--table-max-height);
+  }
+  
+  .music-item {
+    padding: var(--spacing-sm);
+    min-height: 56px;
+  }
+  
+  .item-image {
+    width: 40px;
+    height: 40px;
+    margin-right: var(--spacing-md);
+  }
+  
+  .item-rank {
+    font-size: var(--font-size-xs);
+    top: 5px;
+    left: 5px;
+    padding: 1px 4px;
+  }
+  
+  .spotify-link {
+    width: 24px;
+    height: 24px;
+    margin-left: var(--spacing-sm);
+  }
+  
+  .spotify-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-header {
+    padding: var(--spacing-md);
+  }
+  
+  .card-header h2 {
+    font-size: 0.875rem;
+  }
+  
+  .card-content {
+    padding: var(--spacing-md);
+    min-height: 120px;
+  }
+  
+  .scrollable-table {
+    max-height: var(--table-max-height);
+  }
+  
+  .music-item {
+    padding: var(--spacing-sm);
+    min-height: 52px;
+  }
+  
+  .item-image {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.625rem;
+  }
+  
+  .item-rank {
+    font-size: var(--font-size-xs);
+    top: 4px;
+    left: 4px;
+    padding: 1px 3px;
+  }
+}
+
+@media (max-width: 320px) {
+  .card-header {
+    padding: var(--spacing-md);
+  }
+  
+  .card-header h2 {
+    font-size: 0.875rem;
+  }
+  
+  .card-content {
+    padding: var(--spacing-md);
+    min-height: 120px;
+  }
+  
+  .scrollable-table {
+    max-height: var(--table-max-height);
+  }
+  
+  .music-item {
+    padding: var(--spacing-sm);
+    min-height: 52px;
+  }
+  
+  .item-image {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.625rem;
+  }
+  
+  .item-rank {
+    font-size: var(--font-size-xs);
+    top: 4px;
+    left: 4px;
+    padding: 1px 3px;
+  }
+}
