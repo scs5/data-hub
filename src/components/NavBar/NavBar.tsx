@@ -29,20 +29,26 @@ const NavBar: React.FC<NavBarProps> = ({
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Detect scrollbar width
+  // Detect scrollbar width using the measure div approach
   useEffect(() => {
     const getScrollbarWidth = () => {
-      const outer = document.createElement('div');
-      outer.style.visibility = 'hidden';
-      outer.style.overflow = 'scroll';
-      (outer.style as any).msOverflowStyle = 'scrollbar';
-      document.body.appendChild(outer);
+      // Create the div
+      const scrollDiv = document.createElement("div");
+      scrollDiv.className = "scrollbar-measure";
+      scrollDiv.style.cssText = `
+        position: absolute;
+        top: -9999px;
+        width: 100px;
+        height: 100px;
+        overflow: scroll;
+      `;
+      document.body.appendChild(scrollDiv);
 
-      const inner = document.createElement('div');
-      outer.appendChild(inner);
+      // Get the scrollbar width
+      const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
-      const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-      outer.parentNode?.removeChild(outer);
+      // Delete the div
+      document.body.removeChild(scrollDiv);
 
       return scrollbarWidth;
     };
