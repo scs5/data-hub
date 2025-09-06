@@ -3,7 +3,6 @@
 
 :root {
   --header-height: 3.5rem;
-  --scrollbar-width: 0px;
 
   --black-color: hsl(220, 24%, 12%);
   --black-color-light: hsl(220, 24%, 15%);
@@ -21,11 +20,10 @@
   --z-fixed: 100;
 }
 
-/* Detect scrollbar width for different browsers */
+/* Responsive font size */
 @media screen and (min-width: 1024px) {
   :root {
     --normal-font-size: 1rem;
-    --scrollbar-width: 17px; /* Common scrollbar width on desktop */
   }
 }
 
@@ -40,7 +38,6 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
-  scrollbar-gutter: stable;
   overflow-x: hidden;
 }
 
@@ -62,7 +59,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100vw - var(--scrollbar-width));
+  width: 100%;
   background-color: var(--black-color);
   box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
   z-index: var(--z-fixed);

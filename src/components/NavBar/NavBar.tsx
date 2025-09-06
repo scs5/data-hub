@@ -26,7 +26,37 @@ const NavBar: React.FC<NavBarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set());
+  const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
+
+  // Detect scrollbar width
+  useEffect(() => {
+    const getScrollbarWidth = () => {
+      const outer = document.createElement('div');
+      outer.style.visibility = 'hidden';
+      outer.style.overflow = 'scroll';
+      (outer.style as any).msOverflowStyle = 'scrollbar';
+      document.body.appendChild(outer);
+
+      const inner = document.createElement('div');
+      outer.appendChild(inner);
+
+      const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+      outer.parentNode?.removeChild(outer);
+
+      return scrollbarWidth;
+    };
+
+    const updateScrollbarWidth = () => {
+      setScrollbarWidth(getScrollbarWidth());
+    };
+
+    updateScrollbarWidth();
+
+    window.addEventListener('resize', updateScrollbarWidth);
+    
+    return () => window.removeEventListener('resize', updateScrollbarWidth);
+  }, []);
 
   // Close menu on outside click (mobile only)
   useEffect(() => {
@@ -130,7 +160,12 @@ const NavBar: React.FC<NavBarProps> = ({
   };
 
   return (
-    <header className={`header ${className}`}>
+    <header 
+      className={`header ${className}`}
+      style={{
+        width: `calc(100% - ${scrollbarWidth}px)`
+      }}
+    >
       <nav className="nav container" ref={navRef}>
         <div className="nav-data">
           <NavLink to="/" className="nav-logo">
